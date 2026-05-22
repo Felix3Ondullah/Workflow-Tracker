@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { createApplication, getApplication, updateApplication } from "../api";
 import { ApplicationForm, buildInitialForm } from "../components/ApplicationForm";
+import { PrimaryAction, Surface } from "../components/ui";
 
 export function ApplicationFormPage({ mode }) {
   const { applicationId } = useParams();
@@ -57,28 +58,23 @@ export function ApplicationFormPage({ mode }) {
 
   return (
     <section className="grid gap-5">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <Surface className="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
+          <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.25em] text-emerald-700">
             {mode === "create" ? "New Draft" : "Edit Draft"}
           </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-800">
             {mode === "create" ? "Create application" : "Update application"}
           </h1>
         </div>
-        <Link
-          className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-ink/15 bg-white/70 px-5 py-3 font-medium text-ink transition hover:bg-white"
-          to="/"
-        >
+        <PrimaryAction as={Link} className="bg-slate-800 hover:bg-slate-900" to="/">
           Back to list
-        </Link>
-      </div>
+        </PrimaryAction>
+      </Surface>
 
       {error ? <p className="rounded-2xl bg-rose-100 px-4 py-3 text-rose-800">{error}</p> : null}
       {loading ? (
-        <div className="rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel">
-          <p className="text-ink/70">Loading application...</p>
-        </div>
+        <Surface className="px-5 py-8 text-sm text-slate-500">Loading application...</Surface>
       ) : (
         <ApplicationForm
           form={form}

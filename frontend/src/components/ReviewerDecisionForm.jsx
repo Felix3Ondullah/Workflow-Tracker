@@ -4,13 +4,13 @@ export function ReviewerDecisionForm({ value, onChange, onSubmit, busy }) {
   const commentRequired = value.decision === "Need More Information" || value.decision === "Rejected";
 
   return (
-    <form className="grid gap-5 rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel" onSubmit={onSubmit}>
-      <h3 className="text-xl font-semibold tracking-tight text-ink">Reviewer Decision</h3>
+    <form className="grid gap-5 rounded-2xl border border-slate-200 bg-white p-5" onSubmit={onSubmit}>
+      <h3 className="text-lg font-semibold tracking-tight text-slate-800">Reviewer Decision</h3>
 
       <label className="grid gap-2">
-        <span className="text-sm font-semibold text-ink">Decision</span>
+        <span className="text-[12px] font-medium text-slate-600">Decision</span>
         <select
-          className="w-full rounded-2xl border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-emerald-500"
+          className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-emerald-500"
           name="decision"
           value={value.decision}
           onChange={onChange}
@@ -24,9 +24,9 @@ export function ReviewerDecisionForm({ value, onChange, onSubmit, busy }) {
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm font-semibold text-ink">Comment</span>
+        <span className="text-[12px] font-medium text-slate-600">Comment</span>
         <textarea
-          className="w-full rounded-3xl border border-ink/15 bg-white px-4 py-3 outline-none transition placeholder:text-ink/35 focus:border-emerald-500"
+          className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none transition placeholder:text-slate-300 focus:border-emerald-500"
           name="comment"
           rows="4"
           value={value.comment}
@@ -37,7 +37,7 @@ export function ReviewerDecisionForm({ value, onChange, onSubmit, busy }) {
       </label>
 
       <button
-        className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-ink px-5 py-3 font-semibold text-foam transition hover:bg-emerald-950 disabled:cursor-not-allowed disabled:opacity-70"
+        className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-4 py-2 text-[12px] font-medium text-white transition hover:bg-emerald-600 disabled:cursor-not-allowed disabled:opacity-70"
         type="submit"
         disabled={busy}
       >
