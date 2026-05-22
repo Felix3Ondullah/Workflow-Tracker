@@ -1,6 +1,4 @@
 .venv/
-.sixth/
-.codex
 
 __pycache__/
 *.pyc
