@@ -29,39 +29,53 @@ Tracker/
 
 ## Backend Setup
 
-1. Create a virtual environment:
+Start from the project root and create the virtual environment there:
 
 ```bash
+cd /path/to/Tracker
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-2. Install backend dependencies:
+The virtual environment should stay in the root of the project as `.venv/`.
+
+Then move into the backend folder:
 
 ```bash
-pip install -r backend/requirements.txt
+cd backend
 ```
 
-3. Run migrations:
+1. Install backend dependencies:
 
 ```bash
-python backend/manage.py migrate
+../.venv/bin/pip install -r requirements.txt
 ```
 
-4. Start the backend server:
+2. Run migrations:
 
 ```bash
-python backend/manage.py runserver
+../.venv/bin/python manage.py migrate
+```
+
+3. Start the backend server:
+
+```bash
+../.venv/bin/python manage.py runserver
 ```
 
 The backend will be available at `http://127.0.0.1:8000/`.
 
 ## Frontend Setup
 
-1. Install frontend dependencies:
+From the project root, move into the frontend folder:
 
 ```bash
 cd frontend
+```
+
+1. Install frontend dependencies:
+
+```bash
 npm install
 ```
 
@@ -78,8 +92,8 @@ The frontend will be available at `http://localhost:5173/`.
 Backend tests:
 
 ```bash
-source .venv/bin/activate
-python backend/manage.py test applications
+cd backend
+../.venv/bin/python manage.py test applications
 ```
 
 Frontend production build:
