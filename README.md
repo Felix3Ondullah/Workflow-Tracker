@@ -63,9 +63,9 @@ cd backend
 ../.venv/bin/python manage.py runserver
 ```
 
-The backend will be available at `http://127.0.0.1:8000/`. and for swagger documentation at `http://127.0.0.1:8000/api/docs`.
+The backend will be available at `http://127.0.0.1:8000/`. and for swagger documentation at `http://127.0.0.1:8000/api/docs` where you can view and test all available endpoints directly in the browser.
 
-- http://127.0.0.1:8000/api/docs
+
 
 ## Frontend Setup
 
