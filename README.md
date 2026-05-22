@@ -105,8 +105,8 @@ npm run build
 
 ## API Endpoints
 
-- `POST /api/applications` - Create application draft
-- `GET /api/applications` - List applications
+- `POST /api/applications/` - Create application draft
+- `GET /api/applications/` - List applications
 - `GET /api/applications/{id}` - View application details
 - `PUT /api/applications/{id}` - Update editable application
 - `POST /api/applications/{id}/submit` - Submit or resubmit application
@@ -126,7 +126,7 @@ npm run build
 - Add authentication, reviewer roles, and audit trails.
 - Add filtering, search, and pagination on the application list.
 - Add frontend form validation and toast notifications.
-- Add API integration tests and frontend component tests.
+- Add frontend component tests and end-to-end coverage for the React workflow.
 - Add environment-based settings and Docker support.
 
 ## Screenshots / Walkthrough
