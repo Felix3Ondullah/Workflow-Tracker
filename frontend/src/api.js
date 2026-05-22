@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8000/api/applications";
+const API_BASE_URL = "http://127.0.0.1:8000/api/applications/";
 
 async function request(path = "", options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -32,7 +32,7 @@ export function listApplications() {
 }
 
 export function getApplication(applicationId) {
-  return request(`/${applicationId}`);
+  return request(`${applicationId}`);
 }
 
 export function createApplication(payload) {
@@ -43,22 +43,22 @@ export function createApplication(payload) {
 }
 
 export function updateApplication(applicationId, payload) {
-  return request(`/${applicationId}`, {
+  return request(`${applicationId}`, {
     method: "PUT",
     body: JSON.stringify(payload),
   });
 }
 
 export function submitApplication(applicationId) {
-  return request(`/${applicationId}/submit`, { method: "POST" });
+  return request(`${applicationId}/submit`, { method: "POST" });
 }
 
 export function startReview(applicationId) {
-  return request(`/${applicationId}/start-review`, { method: "POST" });
+  return request(`${applicationId}/start-review`, { method: "POST" });
 }
 
 export function recordDecision(applicationId, payload) {
-  return request(`/${applicationId}/decision`, {
+  return request(`${applicationId}/decision`, {
     method: "POST",
     body: JSON.stringify(payload),
   });
