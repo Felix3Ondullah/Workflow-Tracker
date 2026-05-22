@@ -89,25 +89,33 @@ The frontend will be available at `http://localhost:5173/`.
 
 ## Running Checks
 
-Backend tests:
+Reviewers can verify the project with the commands below.
+
+### Backend tests
+
+This runs the Django test suite for workflow rules and API behavior.
 
 ```bash
 cd backend
 ../.venv/bin/python manage.py test applications
 ```
 
-Frontend production build:
+### Frontend unit tests
 
-```bash
-cd frontend
-npm run build
-```
-
-Frontend unit tests:
+This runs the React unit tests with Vitest and Testing Library.
 
 ```bash
 cd frontend
 npm test
+```
+
+### Frontend production build
+
+This confirms the frontend builds successfully for production.
+
+```bash
+cd frontend
+npm run build
 ```
 
 ## API Endpoints
