@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
 import { listApplications } from "../api";
-import { PrimaryAction, Surface } from "../components/ui";
+import { Surface } from "../components/ui";
 
 const workflowGroups = [
   { title: "Draft", statuses: ["Draft"], dotClassName: "bg-slate-400", bandClassName: "bg-slate-100 text-slate-700" },
@@ -183,14 +181,6 @@ export function ApplicationListPage() {
           <p className="text-[11px] text-slate-400">Track applications by stage with a compact operations view.</p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <PrimaryAction as={Link} to="/applications/new">
-            Add Application
-          </PrimaryAction>
-          <PrimaryAction as={Link} className="bg-slate-800 hover:bg-slate-900" to="/">
-            Applications
-          </PrimaryAction>
-        </div>
       </Surface>
 
       {error ? <p className="rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700">{error}</p> : null}
