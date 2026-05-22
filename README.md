@@ -103,6 +103,13 @@ cd frontend
 npm run build
 ```
 
+Frontend unit tests:
+
+```bash
+cd frontend
+npm test
+```
+
 ## API Endpoints
 
 - `POST /api/applications/` - Create application draft
@@ -126,7 +133,7 @@ npm run build
 - Add authentication, reviewer roles, and audit trails.
 - Add filtering, search, and pagination on the application list.
 - Add frontend form validation and toast notifications.
-- Add frontend component tests and end-to-end coverage for the React workflow.
+- Add end-to-end coverage for the React workflow.
 - Add environment-based settings and Docker support.
 
 ## Screenshots / Walkthrough
