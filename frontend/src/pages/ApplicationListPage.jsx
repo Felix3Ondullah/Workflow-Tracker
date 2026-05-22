@@ -56,6 +56,7 @@ export function ApplicationListPage() {
                 <th className="px-4 py-4 text-left text-sm font-semibold text-ink/70">Type</th>
                 <th className="px-4 py-4 text-left text-sm font-semibold text-ink/70">Status</th>
                 <th className="px-4 py-4 text-left text-sm font-semibold text-ink/70">Created</th>
+                <th className="px-4 py-4 text-left text-sm font-semibold text-ink/70">Open</th>
               </tr>
             </thead>
             <tbody>
@@ -73,6 +74,31 @@ export function ApplicationListPage() {
                     <StatusBadge status={application.status} />
                   </td>
                   <td className="px-4 py-4 text-ink/70">{new Date(application.created_at).toLocaleDateString()}</td>
+                  <td className="px-4 py-4">
+                    <Link
+                      aria-label={`Open ${application.tracking_number}`}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800"
+                      to={`/applications/${application.id}`}
+                      title="Open application"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7S3.732 16.057 2.458 12Z"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                        />
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
+                      </svg>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
