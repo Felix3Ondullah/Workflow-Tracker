@@ -42,6 +42,20 @@ class ApplicationWorkflowTests(TestCase):
         self.assertEqual(self.application.status, ApplicationStatus.SUBMITTED)
         self.assertEqual(self.application.reviewer_comment, "")
 
+    def test_under_review_application_cannot_be_submitted_again(self):
+        self.application.submit()
+        self.application.start_review()
+
+        with self.assertRaisesMessage(ValidationError, "Only Draft or Need More Information applications can be submitted."):
+            self.application.submit()
+
+    def test_invalid_decision_value_is_rejected(self):
+        self.application.submit()
+        self.application.start_review()
+
+        with self.assertRaisesMessage(ValidationError, "Invalid reviewer decision."):
+            self.application.record_decision(ApplicationStatus.SUBMITTED, "")
+
 
 class ApplicationApiTests(TestCase):
     def setUp(self):
