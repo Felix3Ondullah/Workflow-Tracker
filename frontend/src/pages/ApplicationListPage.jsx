@@ -61,23 +61,31 @@ export function ApplicationListPage() {
             </thead>
             <tbody>
               {applications.map((application) => (
-                <tr key={application.id} className="border-t border-ink/10">
+                <tr
+                  key={application.id}
+                  className="group border-t border-ink/10 transition hover:bg-emerald-50/70"
+                >
                   <td className="px-4 py-4">
-                    <Link className="font-semibold text-emerald-800 hover:text-emerald-950" to={`/applications/${application.id}`}>
+                    <Link
+                      className="font-semibold text-emerald-800 transition group-hover:text-emerald-950 hover:text-emerald-950"
+                      to={`/applications/${application.id}`}
+                    >
                       {application.tracking_number}
                     </Link>
                   </td>
-                  <td className="px-4 py-4">{application.applicant_name}</td>
-                  <td className="px-4 py-4">{application.company_name}</td>
-                  <td className="px-4 py-4">{application.application_type}</td>
+                  <td className="px-4 py-4 transition group-hover:text-ink">{application.applicant_name}</td>
+                  <td className="px-4 py-4 transition group-hover:text-ink">{application.company_name}</td>
+                  <td className="px-4 py-4 transition group-hover:text-ink">{application.application_type}</td>
                   <td className="px-4 py-4">
                     <StatusBadge status={application.status} />
                   </td>
-                  <td className="px-4 py-4 text-ink/70">{new Date(application.created_at).toLocaleDateString()}</td>
+                  <td className="px-4 py-4 text-ink/70 transition group-hover:text-ink">
+                    {new Date(application.created_at).toLocaleDateString()}
+                  </td>
                   <td className="px-4 py-4">
                     <Link
                       aria-label={`Open ${application.tracking_number}`}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800"
+                      className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-3 py-2 text-sm font-medium text-ink transition group-hover:border-emerald-300 group-hover:bg-white group-hover:text-emerald-800 hover:border-emerald-300 hover:bg-white hover:text-emerald-800"
                       to={`/applications/${application.id}`}
                       title="Open application"
                     >
@@ -97,6 +105,7 @@ export function ApplicationListPage() {
                         />
                         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
                       </svg>
+                      <span>View</span>
                     </Link>
                   </td>
                 </tr>
