@@ -59,16 +59,16 @@ export function ApplicationDetailPage() {
 
   if (loading) {
     return (
-      <div className="card">
-        <p>Loading application...</p>
+      <div className="rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel">
+        <p className="text-ink/70">Loading application...</p>
       </div>
     );
   }
 
   if (!application) {
     return (
-      <div className="card">
-        <p>Application not found.</p>
+      <div className="rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel">
+        <p className="text-ink/70">Application not found.</p>
       </div>
     );
   }
@@ -79,82 +79,96 @@ export function ApplicationDetailPage() {
   const canDecide = application.status === "Under Review";
 
   return (
-    <section className="stack">
-      <div className="section-heading">
+    <section className="grid gap-5">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="eyebrow">Application Detail</p>
-          <h1>{application.tracking_number}</h1>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">Application Detail</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{application.tracking_number}</h1>
         </div>
-        <div className="action-row">
-          <Link className="ghost-link" to="/">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-ink/15 bg-white/70 px-5 py-3 font-medium text-ink transition hover:bg-white"
+            to="/"
+          >
             Back to list
           </Link>
           {canEdit ? (
-            <button className="secondary-button" onClick={() => navigate(`/applications/${application.id}/edit`)}>
+            <button
+              className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-mint px-5 py-3 font-semibold text-ink transition hover:bg-emerald-200"
+              onClick={() => navigate(`/applications/${application.id}/edit`)}
+            >
               Edit
             </button>
           ) : null}
           {canSubmit ? (
-            <button className="primary-button" disabled={working} onClick={() => runAction(() => submitApplication(application.id))}>
+            <button
+              className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-ink px-5 py-3 font-semibold text-foam transition hover:bg-emerald-950 disabled:cursor-not-allowed disabled:opacity-70"
+              disabled={working}
+              onClick={() => runAction(() => submitApplication(application.id))}
+            >
               {application.status === "Draft" ? "Submit" : "Resubmit"}
             </button>
           ) : null}
           {canStartReview ? (
-            <button className="primary-button" disabled={working} onClick={() => runAction(() => startReview(application.id))}>
+            <button
+              className="inline-flex min-h-11 items-center justify-center rounded-2xl bg-ink px-5 py-3 font-semibold text-foam transition hover:bg-emerald-950 disabled:cursor-not-allowed disabled:opacity-70"
+              disabled={working}
+              onClick={() => runAction(() => startReview(application.id))}
+            >
               Start Review
             </button>
           ) : null}
         </div>
       </div>
 
-      {error ? <p className="error-banner">{error}</p> : null}
+      {error ? <p className="rounded-2xl bg-rose-100 px-4 py-3 text-rose-800">{error}</p> : null}
 
-      <div className="detail-layout">
-        <article className="card stack">
-          <div className="detail-header">
-            <h2>Application Information</h2>
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
+        <article className="grid gap-6 rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-2xl font-semibold tracking-tight text-ink">Application Information</h2>
             <StatusBadge status={application.status} />
           </div>
 
-          <div className="detail-grid">
-            <p>
-              <strong>Applicant</strong>
+          <div className="grid gap-4 md:grid-cols-2">
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Applicant</strong>
               <span>{application.applicant_name}</span>
             </p>
-            <p>
-              <strong>Email</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Email</strong>
               <span>{application.applicant_email}</span>
             </p>
-            <p>
-              <strong>Company</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Company</strong>
               <span>{application.company_name}</span>
             </p>
-            <p>
-              <strong>Type</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Type</strong>
               <span>{application.application_type}</span>
             </p>
-            <p>
-              <strong>Created</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Created</strong>
               <span>{new Date(application.created_at).toLocaleString()}</span>
             </p>
-            <p>
-              <strong>Submitted</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Submitted</strong>
               <span>{application.submitted_at ? new Date(application.submitted_at).toLocaleString() : "Not submitted yet"}</span>
             </p>
-            <p>
-              <strong>Reviewed</strong>
+            <p className="grid gap-1">
+              <strong className="text-sm font-semibold text-ink/70">Reviewed</strong>
               <span>{application.reviewed_at ? new Date(application.reviewed_at).toLocaleString() : "Not reviewed yet"}</span>
             </p>
           </div>
 
-          <div>
-            <strong>Description</strong>
-            <p className="description">{application.description}</p>
+          <div className="grid gap-2">
+            <strong className="text-sm font-semibold text-ink/70">Description</strong>
+            <p className="whitespace-pre-wrap text-ink/90">{application.description}</p>
           </div>
 
-          <div>
-            <strong>Reviewer Comment</strong>
-            <p className="description">{application.reviewer_comment || "No reviewer comment yet."}</p>
+          <div className="grid gap-2">
+            <strong className="text-sm font-semibold text-ink/70">Reviewer Comment</strong>
+            <p className="whitespace-pre-wrap text-ink/90">{application.reviewer_comment || "No reviewer comment yet."}</p>
           </div>
         </article>
 

@@ -1,6 +1,6 @@
 # Workflow Tracker
 
-Mini application workflow tracker built with a Django + Django Ninja backend and a React frontend.
+Mini application workflow tracker built with a Django + Django Ninja backend and a React frontend styled with Tailwind CSS.
 
 Author: Felix Ondullah  
 Email: felixondullah@gmail.com
@@ -10,7 +10,7 @@ Email: felixondullah@gmail.com
 ```text
 Tracker/
 ├── backend/   # Django + Django Ninja API
-└── frontend/  # React + Vite UI
+└── frontend/  # React + Vite + Tailwind CSS UI
 ```
 
 ## Features

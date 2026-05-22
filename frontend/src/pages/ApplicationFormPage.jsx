@@ -56,21 +56,28 @@ export function ApplicationFormPage({ mode }) {
   }
 
   return (
-    <section className="stack">
-      <div className="section-heading">
+    <section className="grid gap-5">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="eyebrow">{mode === "create" ? "New Draft" : "Edit Draft"}</p>
-          <h1>{mode === "create" ? "Create application" : "Update application"}</h1>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
+            {mode === "create" ? "New Draft" : "Edit Draft"}
+          </p>
+          <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            {mode === "create" ? "Create application" : "Update application"}
+          </h1>
         </div>
-        <Link className="ghost-link" to="/">
+        <Link
+          className="inline-flex min-h-11 items-center justify-center rounded-2xl border border-ink/15 bg-white/70 px-5 py-3 font-medium text-ink transition hover:bg-white"
+          to="/"
+        >
           Back to list
         </Link>
       </div>
 
-      {error ? <p className="error-banner">{error}</p> : null}
+      {error ? <p className="rounded-2xl bg-rose-100 px-4 py-3 text-rose-800">{error}</p> : null}
       {loading ? (
-        <div className="card">
-          <p>Loading application...</p>
+        <div className="rounded-[28px] border border-ink/10 bg-white/90 p-6 shadow-panel">
+          <p className="text-ink/70">Loading application...</p>
         </div>
       ) : (
         <ApplicationForm
